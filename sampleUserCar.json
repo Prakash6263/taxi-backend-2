@@ -1,0 +1,40 @@
+[
+  {
+    "isDefault": false,
+    "isApprove": true,
+    "carNumber": "XY12 ZC 3456",
+    "carColor": "Red",
+    "carName": "Toyota Camry",
+    "fuelType": "Diesel",
+    "carImage": "path/to/car_image.png",
+    "carPuc": "path/to/car_puc.png",
+    "carInsurance": "path/to/car_insurance.png",
+    "carPermit": "path/to/car_permit.png",
+    "carRegistrationCertificate": "path/to/car_registration_certificate.png",
+    "carRegistrationCertificateBack": "path/to/car_registration_certificate_back.png",
+    "chassisNumber": "path/to/chassis_number.png",
+    "frontNumberPlate": "path/to/front_number_plate.png",
+    "backNumberPlate": "path/to/back_number_plate.png",
+    "leftExrerior": "path/to/left_exterior.png",
+    "rightExrerior": "path/to/right_exterior.png",
+    "carType": {
+      "$oid": "660d62a992a17d845c3a626b"
+    },
+    "carMake": {
+      "$oid": "6610013b76e6f2f377f8c768"
+    },
+    "carModel": {
+      "$oid": "660da94abe5456ade0291066"
+    },
+    "user": {
+      "$oid": "66b1c068478b03925a6a6a58"
+    },
+    "created_at": {
+      "$date": "2024-08-06T10:00:00.000Z"
+    },
+    "updated_at": {
+      "$date": "2024-08-06T10:00:00.000Z"
+    },
+    "__v": 0
+  }
+]

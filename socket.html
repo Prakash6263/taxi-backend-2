@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket.IO Client</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"
+      integrity="sha512-luMnTJZ7oEchNDZAtQhgjomP1eZefnl82ruTH/3Oj/Yu5qYtwL7+dVRccACS/Snp1lFXq188XFipHKYE75IaQQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Include the Socket.IO client library -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize connection to the Socket.IO server
+        const socket = io("http://localhost:9211", {
+          query: { token: "your_jwt_token_here" },
+        });
+
+        // Event listener for connection
+        socket.on("connect", () => {
+          console.log("Connected to server");
+        });
+
+        // Event listener for disconnect
+        socket.on("disconnect", () => {
+          console.log("Disconnected from server");
+        });
+
+        // Handle incoming messages
+        socket.on("chatMessage", (message) => {
+          console.log("Received message:", message);
+          // Update the UI with the received message
+          const messageList = document.getElementById("messageList");
+          const listItem = document.createElement("li");
+          listItem.textContent = message;
+          messageList.appendChild(listItem);
+        });
+
+        // Send a message
+        document
+          .getElementById("sendMessageButton")
+          .addEventListener("click", () => {
+            const messageInput = document.getElementById("messageInput");
+            const message = messageInput.value;
+            socket.emit("sendMessage", { text: message }, (response) => {
+              console.log("Server response:", response);
+            });
+            messageInput.value = ""; // Clear input field
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Socket.IO Client</h1>
+    <ul id="messageList">
+      <!-- Messages will be appended here -->
+    </ul>
+    <input type="text" id="messageInput" placeholder="Type a message" />
+    <button id="sendMessageButton">Send Message</button>
+  </body>
+</html>
